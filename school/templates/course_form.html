@@ -1,0 +1,15 @@
+<!-- school/templates/course_form.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}{% if form.instance.pk %}Edit Course{% else %}Create Course{% endif %}{% endblock %}
+
+{% block content %}
+    <h2>{% if form.instance.pk %}Edit Course{% else %}Create Course{% endif %}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="{% if form.instance.pk %}Update{% else %}Create{% endif %}" class="btn btn-primary">
+    </form>
+    <a href="{% url 'course_list' %}" class="btn">Cancel</a>
+{% endblock %}

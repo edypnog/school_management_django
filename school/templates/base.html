@@ -1,0 +1,49 @@
+<!-- school/templates/base.html -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}School Management{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <nav>
+            <div class="container">
+                <h1>School Management System</h1>
+                <ul>
+                    <li><a href="{% url 'student_list' %}">Home</a></li>
+                    <li><a href="{% url 'cta_view' %}">Contact</a></li>
+                    <li><a href="{% url 'student_list' %}">Students</a></li>
+                    <li><a href="{% url 'course_list' %}">Courses</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- About Section -->
+    <section class="about">
+        {% block content %}
+        {% endblock %}
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">            
+            {% block cta %}                
+            {% endblock cta %}                
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container pull-content">
+            <p>&copy; 2023 School Management System. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

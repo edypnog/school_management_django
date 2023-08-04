@@ -1,0 +1,21 @@
+<!-- school/templates/student_list.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Student List{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            <h2>Student List</h2>
+        </div>
+        <div class="card-body">
+            {% for student in students %}
+                <li>
+                    <a href="{% url 'student_detail' student.pk %}">{{ student.first_name }} {{ student.last_name }}</a> - Grade: {{ student.grade }}
+                </li>
+            {% endfor %}
+        </div>
+        <a href="{% url 'student_create' %}" class="btn btn-primary">Create New Student</a>
+    </div>
+{% endblock %}

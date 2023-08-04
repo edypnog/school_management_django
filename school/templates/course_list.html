@@ -1,0 +1,22 @@
+<!-- school/templates/course_list.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Course List{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2>Course List</h2>
+    </div>
+    <div class="card-body">
+        {% for course in courses %}
+            <li>
+                <a href="{% url 'course_detail' course.pk %}">{{ course.name }} | {{ course.teacher }}</a>
+            </li>
+        {% endfor %}
+    </div>
+    <a href="{% url 'course_create' %}" class="btn">Create New Course</a>
+</div>
+{% endblock %}
+

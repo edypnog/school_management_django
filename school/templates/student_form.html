@@ -1,0 +1,15 @@
+<!-- school/templates/student_form.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}{% if form.instance.pk %}Edit Student{% else %}Create Student{% endif %}{% endblock %}
+
+{% block content %}
+    <h2 class="h2-create">{% if form.instance.pk %}Edit Student{% else %}Create Student{% endif %}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="{% if form.instance.pk %}Update{% else %}Create{% endif %}" class="btn btn-primary">
+        <a href="{% url 'student_list' %}" class="btn">Cancel</a>
+    </form>
+{% endblock %}

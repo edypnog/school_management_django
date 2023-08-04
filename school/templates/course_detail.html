@@ -1,0 +1,18 @@
+<!-- school/templates/course_detail.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Course Detail{% endblock %}
+
+{% block content %}
+    <h2>Course Detail</h2>
+    <p>Name: {{ course.name }}</p>
+    <p>Teacher: {{ course.teacher }}</p>
+    <p>Schedule: {{ course.schedule }}</p>
+    <a href="{% url 'course_update' course.pk %}" class="btn">Edit</a>
+    <form action="{% url 'course_delete' course.pk %}" method="post" style="display: inline;">
+        {% csrf_token %}
+        <input type="submit" value="Delete" class="btn btn-danger">
+    </form>
+    <a href="{% url 'course_list' %}" class="btn">Back to Course List</a>
+{% endblock %}

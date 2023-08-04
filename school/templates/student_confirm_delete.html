@@ -1,0 +1,15 @@
+<!-- school/templates/student_confirm_delete.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Confirm Deletion{% endblock %}
+
+{% block content %}
+    <h2>Confirm Deletion</h2>
+    <p>Are you sure you want to delete "{{ student.first_name }} {{ student.last_name }}"?</p>
+    <form action="{% url 'student_delete' student.pk %}" method="post" style="display: inline;">
+        {% csrf_token %}
+        <input type="submit" value="Yes" class="btn btn-danger">
+    </form>
+    <a href="{% url 'student_detail' student.pk %}" class="btn">No, Cancel</a>
+{% endblock %}
